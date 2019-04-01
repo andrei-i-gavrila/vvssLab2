@@ -6,8 +6,8 @@ import g936.Validator.TemaLabValidator;
 
 import java.io.IOException;
 
-public class TemaLabFileRepo extends AbstractFileRepository {
-    public TemaLabFileRepo(String filename, TemaLabValidator val) throws IOException {
+public class TemaLabFileRepository extends AbstractFileRepository {
+    public TemaLabFileRepository(String filename, TemaLabValidator val) throws IOException {
         super(val, filename);
     }
 

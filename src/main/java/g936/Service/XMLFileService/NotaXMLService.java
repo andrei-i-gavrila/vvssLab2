@@ -2,7 +2,7 @@ package g936.Service.XMLFileService;
 
 import g936.Domain.Nota;
 import g936.Domain.TemaLab;
-import g936.Repository.XMLFileRepository.NotaXMLRepo;
+import g936.Repository.XMLFileRepository.NotaXMLRepository;
 
 import java.io.DataOutputStream;
 import java.io.FileOutputStream;
@@ -10,9 +10,9 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 
 public class NotaXMLService extends AbstractXMLService<Integer, Nota> {
-    private NotaXMLRepo xmlrepo;
+    private NotaXMLRepository xmlrepo;
 
-    public NotaXMLService(NotaXMLRepo xmlrepo) {
+    public NotaXMLService(NotaXMLRepository xmlrepo) {
         super(xmlrepo);
     }
 

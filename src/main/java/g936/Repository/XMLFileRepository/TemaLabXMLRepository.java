@@ -6,10 +6,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 
-public class TemaLabXMLRepo extends AbstractXMLRepo<Integer, TemaLab> {
+public class TemaLabXMLRepository extends AbstractXMLRepository<Integer, TemaLab> {
     //private String fileName;
 
-    public TemaLabXMLRepo(TemaLabValidator v, String fileName) {
+    public TemaLabXMLRepository(TemaLabValidator v, String fileName) {
         super(v, fileName);
     }
 

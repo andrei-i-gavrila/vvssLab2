@@ -7,8 +7,8 @@ import g936.Validator.NotaValidator;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
-public class NotaFileRepo extends AbstractFileRepository {
-    public NotaFileRepo(String filename, NotaValidator val) throws IOException {
+public class NotaFileRepository extends AbstractFileRepository {
+    public NotaFileRepository(String filename, NotaValidator val) throws IOException {
         super(val, filename);
     }
 

@@ -6,10 +6,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 
-public class StudentXMLRepo extends AbstractXMLRepo<String, Student> {
+public class StudentXMLRepository extends AbstractXMLRepository<String, Student> {
     //private String fileName;
 
-    public StudentXMLRepo(StudentValidator v, String fileName) {
+    public StudentXMLRepository(StudentValidator v, String fileName) {
         super(v, fileName);
     }
 

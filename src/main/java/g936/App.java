@@ -1,9 +1,9 @@
 package g936;
 
 import g936.Exceptions.ValidatorException;
-import g936.Repository.XMLFileRepository.NotaXMLRepo;
-import g936.Repository.XMLFileRepository.StudentXMLRepo;
-import g936.Repository.XMLFileRepository.TemaLabXMLRepo;
+import g936.Repository.XMLFileRepository.NotaXMLRepository;
+import g936.Repository.XMLFileRepository.StudentXMLRepository;
+import g936.Repository.XMLFileRepository.TemaLabXMLRepository;
 import g936.Service.XMLFileService.NotaXMLService;
 import g936.Service.XMLFileService.StudentXMLService;
 import g936.Service.XMLFileService.TemaLabXMLService;
@@ -20,9 +20,9 @@ public class App {
         StudentValidator vs = new StudentValidator();
         TemaLabValidator vt = new TemaLabValidator();
         NotaValidator vn = new NotaValidator();
-        StudentXMLRepo strepo = new StudentXMLRepo(vs, "StudentiXML.xml");
-        TemaLabXMLRepo tmrepo = new TemaLabXMLRepo(vt, "TemaLaboratorXML.xml");
-        NotaXMLRepo ntrepo = new NotaXMLRepo(vn, "NotaXML.xml");
+        StudentXMLRepository strepo = new StudentXMLRepository(vs, "StudentiXML.xml");
+        TemaLabXMLRepository tmrepo = new TemaLabXMLRepository(vt, "TemaLaboratorXML.xml");
+        NotaXMLRepository ntrepo = new NotaXMLRepository(vn, "NotaXML.xml");
         StudentXMLService stsrv = new StudentXMLService(strepo);
         TemaLabXMLService tmsrv = new TemaLabXMLService(tmrepo);
         NotaXMLService ntsrv = new NotaXMLService(ntrepo);

@@ -1,12 +1,12 @@
 package g936.Service.XMLFileService;
 
 import g936.Domain.Student;
-import g936.Repository.XMLFileRepository.StudentXMLRepo;
+import g936.Repository.XMLFileRepository.StudentXMLRepository;
 
 public class StudentXMLService extends AbstractXMLService<String, Student> {
-    private StudentXMLRepo xmlrepo;
+    private StudentXMLRepository xmlrepo;
 
-    public StudentXMLService(StudentXMLRepo xmlrepo) {
+    public StudentXMLService(StudentXMLRepository xmlrepo) {
         super(xmlrepo);
     }
 

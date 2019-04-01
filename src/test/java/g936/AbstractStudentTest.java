@@ -2,7 +2,7 @@ package g936;
 
 import g936.Domain.Student;
 import g936.Exceptions.ValidatorException;
-import g936.Repository.MemoryRepository.AbstractCrudRepo;
+import g936.Repository.MemoryRepository.AbstractCrudRepository;
 import g936.Service.TxtFileService.AbstractService;
 import org.junit.After;
 import org.junit.Before;
@@ -18,10 +18,10 @@ import static org.junit.Assert.fail;
 
 public abstract class AbstractStudentTest {
 
-    protected AbstractCrudRepo<String, Student> repo;
+    protected AbstractCrudRepository<String, Student> repo;
     protected AbstractService<String, Student> service;
 
-    protected abstract AbstractCrudRepo<String, Student> getRepoImpl();
+    protected abstract AbstractCrudRepository<String, Student> getRepoImpl();
 
     protected abstract AbstractService<String, Student> getServiceImpl();
 

@@ -8,10 +8,10 @@ import org.w3c.dom.Element;
 import java.time.LocalDateTime;
 
 
-public class NotaXMLRepo extends AbstractXMLRepo<Integer, Nota> {
+public class NotaXMLRepository extends AbstractXMLRepository<Integer, Nota> {
     //private String fileName;
 
-    public NotaXMLRepo(NotaValidator v, String fileName) {
+    public NotaXMLRepository(NotaValidator v, String fileName) {
         super(v, fileName);
     }
 

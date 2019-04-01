@@ -2,43 +2,39 @@ package g936.Service.TxtFileService;
 
 import g936.Domain.HasId;
 import g936.Exceptions.ValidatorException;
-import g936.Repository.MemoryRepository.AbstractCrudRepo;
-import g936.Validator.IValidator;
+import g936.Repository.MemoryRepository.AbstractCrudRepository;
 
 public abstract class AbstractService<ID, E extends HasId<ID>> {
-    private IValidator<E> v;
-    private AbstractCrudRepo<ID, E> repo;
+    private AbstractCrudRepository<ID, E> repository;
 
-    public AbstractService(AbstractCrudRepo<ID, E> repo) {
-        this.repo = repo;
+    public AbstractService(AbstractCrudRepository<ID, E> repository) {
+        this.repository = repository;
     }
 
-    //@Override
     public void add(String[] params) throws ValidatorException {
-        E entity = repo.extractEntity(params);
-        repo.save(entity);
+        E entity = repository.extractEntity(params);
+        repository.save(entity);
     }
 
-    public void del(ID id) throws ValidatorException {
-        //E entity = repo.extractEntity(params);
-        repo.delete(id);
+    public void delete(ID id) {
+        repository.delete(id);
     }
 
-    public void upd(String[] params) throws ValidatorException {
-        E entity = repo.extractEntity(params);
-        repo.update(entity);
+    public void update(String[] params) {
+        E entity = repository.extractEntity(params);
+        repository.update(entity);
     }
 
     public Iterable<E> getAll() {
-        return repo.findAll();
+        return repository.findAll();
     }
 
     public E getById(ID id) {
-        return repo.findOne(id);
+        return repository.findOne(id);
     }
 
     public int size() {
-        return (int) repo.size();
+        return (int) repository.size();
     }
 
 }

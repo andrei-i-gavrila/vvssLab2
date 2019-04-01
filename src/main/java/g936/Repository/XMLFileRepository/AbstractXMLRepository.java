@@ -2,7 +2,7 @@ package g936.Repository.XMLFileRepository;
 
 import g936.Domain.HasId;
 import g936.Exceptions.ValidatorException;
-import g936.Repository.MemoryRepository.AbstractCrudRepo;
+import g936.Repository.MemoryRepository.AbstractCrudRepository;
 import g936.Validator.IValidator;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -15,10 +15,10 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-public abstract class AbstractXMLRepo<ID, E extends HasId<ID>> extends AbstractCrudRepo<ID, E> {
+public abstract class AbstractXMLRepository<ID, E extends HasId<ID>> extends AbstractCrudRepository<ID, E> {
     private String fileName;
 
-    public AbstractXMLRepo(IValidator v, String fileName) {
+    public AbstractXMLRepository(IValidator v, String fileName) {
         super(v);
         this.fileName = fileName;
         loadFromFile();

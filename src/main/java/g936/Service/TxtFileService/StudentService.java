@@ -1,12 +1,11 @@
 package g936.Service.TxtFileService;
 
 import g936.Domain.Student;
-import g936.Repository.MemoryRepository.AbstractCrudRepo;
-import g936.Repository.TxtFileRepository.StudentFileRepo;
+import g936.Repository.MemoryRepository.AbstractCrudRepository;
 
 public class StudentService extends AbstractService<String, Student> {
-    //StudentFileRepo stdRepo;
-    public StudentService(AbstractCrudRepo<String, Student> stdRepo) {
+    //StudentFileRepository stdRepo;
+    public StudentService(AbstractCrudRepository<String, Student> stdRepo) {
         super(stdRepo);
     }
     /*

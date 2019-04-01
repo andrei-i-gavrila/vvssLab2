@@ -5,8 +5,8 @@ import g936.Validator.IValidator;
 
 import java.time.LocalDateTime;
 
-public class NotaRepo extends AbstractCrudRepo<Integer, Nota> {
-    public NotaRepo(IValidator<Nota> v) {
+public class NotaRepository extends AbstractCrudRepository<Integer, Nota> {
+    public NotaRepository(IValidator<Nota> v) {
         super(v);
     }
 

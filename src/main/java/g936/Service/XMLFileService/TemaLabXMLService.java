@@ -2,12 +2,10 @@ package g936.Service.XMLFileService;
 
 import g936.Domain.TemaLab;
 import g936.Exceptions.ValidatorException;
-import g936.Repository.XMLFileRepository.TemaLabXMLRepo;
+import g936.Repository.XMLFileRepository.TemaLabXMLRepository;
 
 public class TemaLabXMLService extends AbstractXMLService<Integer, TemaLab> {
-    private TemaLabXMLRepo xmlrepo;
-
-    public TemaLabXMLService(TemaLabXMLRepo xmlrepo) {
+    public TemaLabXMLService(TemaLabXMLRepository xmlrepo) {
         super(xmlrepo);
     }
 

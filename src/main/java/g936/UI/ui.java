@@ -11,14 +11,14 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class ui {
-    StudentXMLService stdSrv;
-    TemaLabXMLService tmLbSrv;
-    NotaXMLService notaSrv;
+    StudentXMLService studentService;
+    TemaLabXMLService temaLabService;
+    NotaXMLService notaService;
 
     public ui(StudentXMLService srv1, TemaLabXMLService srv2, NotaXMLService srv3) {
-        this.stdSrv = srv1;
-        this.tmLbSrv = srv2;
-        this.notaSrv = srv3;
+        this.studentService = srv1;
+        this.temaLabService = srv2;
+        this.notaService = srv3;
 
     }
 
@@ -53,7 +53,7 @@ public class ui {
         //scanner.nextLine();
         String[] params = {id, nume, grupa, email, prof};
         try {
-            stdSrv.add(params);
+            studentService.add(params);
         } catch (ValidatorException ex) {
             System.out.println(ex.getMessage());
         }
@@ -78,7 +78,7 @@ public class ui {
         //scanner.nextLine();
         String[] params = {id, descr, saptLim, saptPred};
         try {
-            tmLbSrv.add(params);
+            temaLabService.add(params);
         } catch (ValidatorException ex) {
             System.out.println(ex.getMessage());
         }
@@ -102,11 +102,11 @@ public class ui {
         System.out.println("Data:");
         data = scanner.nextLine();
         //scanner.nextLine();
-        String val1 = notaSrv.depunctare(tmLbSrv, idt, val);
+        String val1 = notaService.depunctare(temaLabService, idt, val);
         String[] params = {id, ids, idt, val1, data};
         try {
-            notaSrv.add(params);
-            notaSrv.printAllNotes(tmLbSrv);
+            notaService.add(params);
+            notaService.printAllNotes(temaLabService);
         } catch (ValidatorException ex) {
             System.out.println(ex.getMessage());
         } catch (IOException e) {
@@ -121,7 +121,7 @@ public class ui {
         System.out.println("Id student:");
         id = scanner.nextLine();
         try {
-            stdSrv.remove(id);
+            studentService.remove(id);
         } catch (ServiceException ex) {
             System.out.println(ex.getMessage());
         }
@@ -134,7 +134,7 @@ public class ui {
         System.out.println("Id student:");
         id = scanner.nextInt();
         try {
-            tmLbSrv.remove(id);
+            temaLabService.remove(id);
         } catch (ServiceException ex) {
             System.out.println(ex.getMessage());
         }
@@ -160,7 +160,7 @@ public class ui {
         profnou = scanner.nextLine();
         scanner.nextLine();
         String[] params = {id, numenou, grupanou, emailnou, profnou};
-        stdSrv.update(params);
+        studentService.update(params);
     }
 
 
@@ -185,7 +185,7 @@ public class ui {
         scanner.nextLine();
         //String[] params={id,descr,saptLim,saptPred};
         try {
-            tmLbSrv.prelungireTemaLab(id, descr, saptLim, saptPred, saptCurenta);
+            temaLabService.prelungireTemaLab(id, descr, saptLim, saptPred, saptCurenta);
         } catch (ValidatorException ex) {
             System.out.println(ex.getMessage());
         }
@@ -215,7 +215,7 @@ public class ui {
             } else if (opt.equals("3a")) {
                 this.updStudent();
             } else if (opt.equals("4a")) {
-                this.printAllEntities(stdSrv);
+                this.printAllEntities(studentService);
             } else if (opt.equals("1b")) {
                 this.addHomework();
             } else if (opt.equals("2b")) {
@@ -223,7 +223,7 @@ public class ui {
             } else if (opt.equals("3b")) {
                 this.prelungireDeadLine();
             } else if (opt.equals("4b")) {
-                this.printAllEntities(tmLbSrv);
+                this.printAllEntities(temaLabService);
             } else if (opt.equals("5")) {
                 this.addNota();
             } else if (opt.equals("6")) {

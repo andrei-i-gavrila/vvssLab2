@@ -2,18 +2,16 @@ package g936.Service.XMLFileService;
 
 import g936.Domain.HasId;
 import g936.Exceptions.ValidatorException;
-import g936.Repository.XMLFileRepository.AbstractXMLRepo;
+import g936.Repository.XMLFileRepository.AbstractXMLRepository;
 
 public abstract class AbstractXMLService<ID, E extends HasId<ID>> {
-    private AbstractXMLRepo xmlrepo;
+    private AbstractXMLRepository<ID, E> xmlrepo;
 
-    public AbstractXMLService(AbstractXMLRepo xmlrepo) {
+    public AbstractXMLService(AbstractXMLRepository<ID, E> xmlrepo) {
         this.xmlrepo = xmlrepo;
     }
 
     protected abstract E extractEntity(String[] params);
-    //return new Student(params[0],params[1],Integer.parseInt(params[2]),params[3],params[4]);
-    //}
 
     public void add(String[] params) throws ValidatorException {
         E e = extractEntity(params);
@@ -30,7 +28,7 @@ public abstract class AbstractXMLService<ID, E extends HasId<ID>> {
     }
 
     public E findOne(ID id) {
-        return (E) xmlrepo.findOne(id);
+        return xmlrepo.findOne(id);
     }
 
     public Iterable<E> findAll() {

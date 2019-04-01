@@ -6,8 +6,8 @@ import g936.Validator.StudentValidator;
 
 import java.io.IOException;
 
-public class StudentFileRepo extends AbstractFileRepository {
-    public StudentFileRepo(String filename, StudentValidator val) throws IOException {
+public class StudentFileRepository extends AbstractFileRepository {
+    public StudentFileRepository(String filename, StudentValidator val) throws IOException {
         super(val, filename);
     }
 

@@ -2,38 +2,36 @@ package g936.Repository.MemoryRepository;
 
 import g936.Domain.HasId;
 import g936.Exceptions.ValidatorException;
-import g936.Repository.Repo;
+import g936.Repository.Repository;
 import g936.Validator.IValidator;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class AbstractCrudRepo<ID, E extends HasId<ID>> implements Repo<ID, E> {
-    Map<ID, E> entityes;
-    IValidator<E> validator;
+public abstract class AbstractCrudRepository<ID, E extends HasId<ID>> implements Repository<ID, E> {
+    private Map<ID, E> entities;
+    private IValidator<E> validator;
 
-    public AbstractCrudRepo(IValidator v) {
-        entityes = new HashMap<ID, E>();
-        validator = v;
+    public AbstractCrudRepository(IValidator<E> validator) {
+        entities = new HashMap<>();
+        this.validator = validator;
     }
 
     @Override
     public E findOne(ID id) {
-        if (entityes.get(id) == null) {
+        if (entities.get(id) == null) {
             return null;
+        } else if (id == null) {
+            throw new IllegalArgumentException();
         } else {
-            if (id == null) {
-                throw new IllegalArgumentException();
-            } else {
-                return entityes.get(id);
-            }
+            return entities.get(id);
         }
 
     }
 
     @Override
     public Iterable<E> findAll() {
-        return entityes.values();
+        return entities.values();
     }
 
     @Override
@@ -43,7 +41,7 @@ public abstract class AbstractCrudRepo<ID, E extends HasId<ID>> implements Repo<
         }
         try {
             validator.validate(entity);
-            return entityes.putIfAbsent(entity.getId(), entity);
+            return entities.putIfAbsent(entity.getId(), entity);
         } catch (ValidatorException ex) {
             throw new ValidatorException(ex.getMessage());
         }
@@ -51,7 +49,7 @@ public abstract class AbstractCrudRepo<ID, E extends HasId<ID>> implements Repo<
 
     @Override
     public E delete(ID id) {
-        return entityes.remove(id);
+        return entities.remove(id);
     }
 
     @Override
@@ -59,10 +57,9 @@ public abstract class AbstractCrudRepo<ID, E extends HasId<ID>> implements Repo<
         try {
             if (entity == null) {
                 throw new IllegalArgumentException("Entity can not be null!\n");
-            } else {
-                validator.validate(entity);
-                return entityes.replace(entity.getId(), entity);
             }
+            validator.validate(entity);
+            return entities.replace(entity.getId(), entity);
         } catch (ValidatorException e) {
             return null;
         }
@@ -70,7 +67,7 @@ public abstract class AbstractCrudRepo<ID, E extends HasId<ID>> implements Repo<
 
     //@Override
     public long size() {
-        return entityes.size();
+        return entities.size();
     }
 
     public abstract E extractEntity(String[] params);

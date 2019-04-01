@@ -3,9 +3,9 @@ package g936.Repository.MemoryRepository;
 import g936.Domain.TemaLab;
 import g936.Validator.IValidator;
 
-public class TemaLabRepo extends AbstractCrudRepo<Integer, TemaLab> {
+public class TemaLabRepository extends AbstractCrudRepository<Integer, TemaLab> {
 
-    public TemaLabRepo(IValidator<TemaLab> v) {
+    public TemaLabRepository(IValidator<TemaLab> v) {
 
         super(v);
     }

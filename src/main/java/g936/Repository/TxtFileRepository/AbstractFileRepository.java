@@ -3,7 +3,7 @@ package g936.Repository.TxtFileRepository;
 import g936.Domain.HasId;
 import g936.Exceptions.RepositoryException;
 import g936.Exceptions.ValidatorException;
-import g936.Repository.MemoryRepository.AbstractCrudRepo;
+import g936.Repository.MemoryRepository.AbstractCrudRepository;
 import g936.Validator.IValidator;
 
 import java.io.DataInputStream;
@@ -12,10 +12,10 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public abstract class AbstractFileRepository<ID, E extends HasId<ID>> extends AbstractCrudRepo<ID, E> {
+public abstract class AbstractFileRepository<ID, E extends HasId<ID>> extends AbstractCrudRepository<ID, E> {
     private String filename;
 
-    public AbstractFileRepository(IValidator v, String filename) {
+    public AbstractFileRepository(IValidator<E> v, String filename) {
         super(v);
         this.filename = filename;
         //readFromFile();
@@ -45,7 +45,6 @@ public abstract class AbstractFileRepository<ID, E extends HasId<ID>> extends Ab
             String[] info = line.split("#");
             E e = extractEntity(info);
             E saved = super.save(e);
-
         }
 
     }
