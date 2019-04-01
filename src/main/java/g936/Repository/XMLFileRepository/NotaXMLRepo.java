@@ -52,4 +52,9 @@ public class NotaXMLRepo extends AbstractXMLRepo<Integer, Nota> {
     }
 
 
+    @Override
+    public Nota extractEntity(String[] params) {
+        Nota n = new Nota(Integer.parseInt(params[0]), params[1], Integer.parseInt(params[2]), Double.parseDouble(params[3]), LocalDateTime.parse(params[4]));
+        return n;
+    }
 }

@@ -2,14 +2,14 @@ package g936.Service.TxtFileService;
 
 import g936.Domain.HasId;
 import g936.Exceptions.ValidatorException;
-import g936.Repository.TxtFileRepository.AbstractFileRepository;
+import g936.Repository.MemoryRepository.AbstractCrudRepo;
 import g936.Validator.IValidator;
 
 public abstract class AbstractService<ID, E extends HasId<ID>> {
     private IValidator<E> v;
-    private AbstractFileRepository<ID, E> repo;
+    private AbstractCrudRepo<ID, E> repo;
 
-    public AbstractService(AbstractFileRepository repo) {
+    public AbstractService(AbstractCrudRepo<ID, E> repo) {
         this.repo = repo;
     }
 

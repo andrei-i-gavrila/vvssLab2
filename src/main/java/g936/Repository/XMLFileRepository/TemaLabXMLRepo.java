@@ -44,4 +44,8 @@ public class TemaLabXMLRepo extends AbstractXMLRepo<Integer, TemaLab> {
         return new TemaLab(Integer.parseInt(nr), descr, Integer.parseInt(sptLim), Integer.parseInt(sptPrd));
     }
 
+    @Override
+    public TemaLab extractEntity(String[] params) {
+        return new TemaLab(Integer.parseInt(params[0]), params[1], Integer.parseInt(params[2]), Integer.parseInt(params[3]));
+    }
 }

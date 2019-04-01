@@ -73,4 +73,5 @@ public abstract class AbstractCrudRepo<ID, E extends HasId<ID>> implements Repo<
         return entityes.size();
     }
 
+    public abstract E extractEntity(String[] params);
 }

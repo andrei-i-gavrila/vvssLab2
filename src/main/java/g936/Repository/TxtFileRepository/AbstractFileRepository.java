@@ -50,8 +50,6 @@ public abstract class AbstractFileRepository<ID, E extends HasId<ID>> extends Ab
 
     }
 
-    public abstract E extractEntity(String[] info);
-
     @Override
     public E findOne(ID id) {
         return super.findOne(id);

@@ -50,5 +50,15 @@ public class StudentXMLRepo extends AbstractXMLRepo<String, Student> {
         return new Student(id, nume, gr, email, prof);
     }
 
+    @Override
+    public Student extractEntity(String[] params) {
+        int grupa = 0;
+        try {
+            grupa = Integer.parseInt(params[2]);
+        } catch (NumberFormatException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return new Student(params[0], params[1], grupa, params[3], params[4]);
+    }
 }
 
