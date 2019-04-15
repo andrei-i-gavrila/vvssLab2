@@ -1,6 +1,5 @@
 package g936;
 
-import g936.Domain.Student;
 import g936.Domain.TemaLab;
 import g936.Exceptions.ValidatorException;
 import g936.Repository.MemoryRepository.AbstractCrudRepository;
@@ -9,6 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -62,8 +62,78 @@ public abstract class AbstractTemaLabTest {
             service.add(toParams("1", "tema 1", "15", "10"));
             fail();
         } catch (ValidatorException e) {
-
         }
+    }
 
+    @Test
+    public void shouldFailForEmptyNumber() {
+        try {
+            service.add(toParams("", "tema 1", "12", "10"));
+            fail();
+        } catch (NumberFormatException | ValidatorException e) {
+        }
+    }
+
+    @Test
+    public void shouldFailForEmptyDescription() {
+        try {
+            service.add(toParams("1", "", "12", "10"));
+            fail();
+        } catch (ValidatorException e) {
+        }
+    }
+
+    @Test
+    public void shouldFailForLimit() {
+        try {
+            service.add(toParams("1", "11", "", "10"));
+            fail();
+        } catch (NumberFormatException | ValidatorException e) {
+        }
+    }
+
+    @Test
+    public void shouldFailForDate() {
+        try {
+            service.add(toParams("1", "11", "10", ""));
+            fail();
+        } catch (NumberFormatException | ValidatorException e) {
+        }
+    }
+
+    @Test
+    public void shouldFailForLimitBeforeDate() {
+        try {
+            service.add(toParams("1", "11", "6", "8"));
+            fail();
+        } catch (NumberFormatException | ValidatorException e) {
+        }
+    }
+
+    @Test
+    public void shouldFailForNotANumber() {
+        try {
+            service.add(toParams("1", "11", "1", "-8"));
+            fail();
+        } catch (ValidatorException e) {
+        }
+    }
+
+    @Test
+    public void shouldFailForNegativeLimit() {
+        try {
+            service.add(toParams("1", "11", "-1", "8"));
+            fail();
+        } catch (ValidatorException e) {
+        }
+    }
+
+    @Test
+    public void shouldFailForIdNotANumber() {
+        try {
+            service.add(toParams("asodajosd", "11", "-1", "8"));
+            fail();
+        } catch (NumberFormatException | ValidatorException e) {
+        }
     }
 }

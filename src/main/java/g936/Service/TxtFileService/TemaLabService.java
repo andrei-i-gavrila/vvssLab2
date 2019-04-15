@@ -18,10 +18,4 @@ public class TemaLabService extends AbstractService<Integer, TemaLab> {
         }
 
     }
-    /*
-    @Override
-    public Student extractEntity(String[] info){
-        return new Student("","",2,"","");
-    }
-    */
 }

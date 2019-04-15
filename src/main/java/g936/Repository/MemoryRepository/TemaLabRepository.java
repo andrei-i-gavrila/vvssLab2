@@ -6,15 +6,7 @@ import g936.Validator.IValidator;
 public class TemaLabRepository extends AbstractCrudRepository<Integer, TemaLab> {
 
     public TemaLabRepository(IValidator<TemaLab> v) {
-
         super(v);
-    }
-
-    public void prelungireTermenLimita(TemaLab t, int saptCurenta) {
-        if (saptCurenta <= t.getSaptammanaPredarii()) {
-            t.setTermenLimita(t.getTermenLimita() + 1);
-            update(t);
-        }
     }
 
     @Override

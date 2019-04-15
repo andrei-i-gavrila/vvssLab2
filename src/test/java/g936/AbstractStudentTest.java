@@ -84,8 +84,8 @@ public abstract class AbstractStudentTest {
     public void shouldFailForGroupNotANumber() {
         try {
             service.add(toParams("1", "Name", "not a number", "email@test.com", "Profulesc"));
-            fail();
-        } catch (ValidatorException ignored) {
+            assertEquals(0, service.getById("").getGrupa());
+        } catch (Exception ignored) {
         }
     }
 
